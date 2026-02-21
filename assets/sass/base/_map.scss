@@ -1,0 +1,6 @@
+// Sometimes is hard to see the routes in the map
+// if the street is yellow and the line color orange
+// the user can have a hard time seeing that
+.leaflet-tile {
+    filter: saturate(40%) !important;
+}

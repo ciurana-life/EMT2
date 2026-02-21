@@ -1,0 +1,22 @@
+@use 'mixins';
+
+input[type="text"] {
+  background: white;
+  font-size: 16;
+  @include mixins.form-control();
+}
+
+input:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0px 1000px white inset; /* fill with your background color */
+  -webkit-text-fill-color: #000; /* text color */
+  transition: background-color 5000s ease-in-out 0s; /* prevent flash */
+}
+
+input:-moz-autofill {
+  box-shadow: 0 0 0px 1000px white inset;
+  -moz-text-fill-color: #000;
+}
+
+label {
+    display: block;
+}

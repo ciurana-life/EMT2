@@ -1,0 +1,14 @@
+@use 'button';
+@use 'text_input';
+@use '../base/variables';
+
+a {
+    color: blue;
+}
+
+div.box_form {
+    display: flex;
+    flex-direction: column;
+    padding: variables.$p;
+    label, input, p, a { margin-bottom: variables.$p };
+}

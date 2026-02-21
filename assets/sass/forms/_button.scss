@@ -1,0 +1,8 @@
+@use 'mixins';
+@use '../base/variables';
+
+button {
+  background: variables.$blue;
+  color: white;
+  @include mixins.form-control();
+}
