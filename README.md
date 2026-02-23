@@ -1,6 +1,6 @@
 # README
 
-This repo is for a project that shows **the real-time locations of buses in Palma de Mallorca** (estimated). You can find it deployed here:[bus.victorciurana.com](https://bus.victorciurana.com/)
+This repo is for a project that shows **the real-time locations of buses in Palma de Mallorca** (estimated). You can find it deployed here: [https://where-is-the-bus-emt.pages.dev/](https://where-is-the-bus-emt.pages.dev/)
 
 ## Requirements
 **Backend**:
