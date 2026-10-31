@@ -253,6 +253,9 @@ function getPointAtDistance(latlngs, distanceMeters) {
     return "#" + Math.floor(Math.random()*16777215).toString(16);
   }
 
+    // Average bus speed in m/s (~14 km/h incl. stops), used to estimate position from seconds
+    const AVG_BUS_SPEED_MS = 4;
+
     async function updateBuses(stopId) {
         const data = await getStopTimes(stopId);
 
@@ -263,7 +266,11 @@ function getPointAtDistance(latlngs, distanceMeters) {
             if (!line.vehicles || line.vehicles.length === 0) return;
 
             const firstVehicle = line.vehicles[0];
-            const meters = firstVehicle.meters;            
+            // EMT stopped sending meters (always 0), so estimate it from seconds to arrival
+            const estimated = !(firstVehicle.meters > 0);
+            const meters = estimated
+                ? (firstVehicle.atStop ? 0 : firstVehicle.seconds * AVG_BUS_SPEED_MS)
+                : firstVehicle.meters;
 
             const route = routesData[lineCode];
             if (!route) return; // no route loaded for this line
@@ -300,6 +307,8 @@ function getPointAtDistance(latlngs, distanceMeters) {
             } else {
                 busMarkers[lineCode].setLatLng(position);
             }
+            // Faded marker when the position is an estimate
+            busMarkers[lineCode].setOpacity(estimated ? 0.7 : 1);
         });
     }
 
